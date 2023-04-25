@@ -1,16 +1,25 @@
 import styles from '@/styles/Home.module.css'
 
 
-export default function Headline({page}) {
+export function Headline(props) {
+
   return (
     <>
-        <h1 className={styles.title}>{page} page</h1>
+        <h1 className={styles.title}>{props.page} page</h1>
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/{page}.js</code>
+            {/* {props.code} */}
+            {props.children}
           </p>
         </div>
+
+        <button
+          // className={styles.button}
+          onClick={props.onClick}
+        >
+          ボタン
+        </button>
     </>
   )
 }
