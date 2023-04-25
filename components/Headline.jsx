@@ -1,4 +1,4 @@
-import styles from '@/styles/Home.module.css'
+import styles from './Headline.module.css'
 
 
 export function Headline(props) {
@@ -15,7 +15,7 @@ export function Headline(props) {
         </div>
 
         <button
-          // className={styles.button}
+          className={styles.button}
           onClick={props.onClick}
         >
           ボタン
