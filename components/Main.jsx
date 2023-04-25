@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
+import styles from './Main.module.css'
 import { Links } from './Links'
 import { Inter } from 'next/font/google'
 import { Headline } from './Headline'
