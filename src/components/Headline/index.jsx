@@ -13,13 +13,6 @@ export function Headline(props) {
             {props.children}
           </p>
         </div>
-
-        <button
-          className={styles.button}
-          onClick={props.onClick}
-        >
-          ボタン
-        </button>
     </>
   )
 }
