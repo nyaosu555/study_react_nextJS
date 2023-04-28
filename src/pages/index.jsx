@@ -3,10 +3,33 @@ import { Inter } from 'next/font/google'
 import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
+import { useCallback } from 'react'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
+// function handleClick(e, foo) {
+//   console.log(e.target.href);
+//   e.preventDefault();
+//   alert(foo);
+// }
+
+
 export default function Home() {
+  
+  const handleClick = useCallback((e) => {
+    console.log(e.target.href);
+    e.preventDefault();
+    alert(foo);
+  },[])
+  
+  const foo = 1;
+  
+  // const handleClick = e => {
+  //   console.log(e.target.href);
+  //   e.preventDefault();
+  // }
+  
   return (
     <>
       <Head>
@@ -16,7 +39,24 @@ export default function Home() {
       </Head>
 
       <Header />
-      
+      <Link href="/about" legacyBehavior>
+      <a 
+          // onClick={props.onClick}
+          // onClick={function() {
+            // alert(123);
+          // }}
+          // onClick={e => {
+          //   console.log(e.target.href);
+          //   e.preventDefault();
+          // }}
+          onClick={handleClick}
+          // onClick={function(e) {
+          //   handleClick(e, foo)
+          // }}
+        >
+          ボタン
+        </a>
+        </Link>
       <Main page="index" />
 
       <Footer />
