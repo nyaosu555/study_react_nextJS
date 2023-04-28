@@ -4,6 +4,7 @@ import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
 import { useCallback } from 'react'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -38,8 +39,8 @@ export default function Home() {
       </Head>
 
       <Header />
-      
-      <a href="/about"
+      <Link href="/about" legacyBehavior>
+      <a 
           // onClick={props.onClick}
           // onClick={function() {
             // alert(123);
@@ -55,7 +56,7 @@ export default function Home() {
         >
           ボタン
         </a>
-
+        </Link>
       <Main page="index" />
 
       <Footer />
