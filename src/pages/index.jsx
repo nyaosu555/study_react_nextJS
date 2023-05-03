@@ -31,28 +31,38 @@ export default function Home() {
   //   e.preventDefault();
   // }
 
-  const handleClick = (e) => {
-    // setFoo(foo+1); 非推奨の書き方
-    setCount(count => count + 1); //推奨されている書き方（countを受け取ってcountを返す）
-    // setCount(count => count + 1); //推奨されている書き方（countを受け取ってcountを返す）
-    // setCount(function(count) {
-    //   return count + 1;
-    // });
-    // setCount = count + 1;
-  }
+  // const handleClick = (e) => {
+  //   // setFoo(foo+1); 非推奨の書き方
+  //   setCount(count => count + 1); //推奨されている書き方（countを受け取ってcountを返す）
+  //   // setCount(count => count + 1); //推奨されている書き方（countを受け取ってcountを返す）
+  //   // setCount(function(count) {
+  //   //   return count + 1;
+  //   // });
+  //   // setCount = count + 1;
+  // }
+
+  const handleClick = useCallback((e) => {
+    if(count < 10) {
+      console.log(count);
+      setCount(count => count +1);
+      // setCount(count => count +1);
+    }
+  }, [count]);
 
   useEffect(() => {
     // console.log('まうんと時');
+    // console.log(`マウント時：${count}`);
     document.body.style.backgroundColor = "lightblue";
     
     return () => {
       // console.log('あんまうんと時');
+      // console.log(`アンマウント時：${count}`);
       document.body.style.backgroundColor = "";
 
     }
   }, []);
 
-  console.log(count);
+  // console.log(count);
 
 
   return (
