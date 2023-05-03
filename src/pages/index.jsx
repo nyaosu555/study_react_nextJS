@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google'
 import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
-import { useCallback, useEffect } from 'react'
-import Link from 'next/link'
+import { useCallback, useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,28 +16,44 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   
-  const handleClick = useCallback((e) => {
-    console.log(e.target.href);
-    e.preventDefault();
-    alert(foo);
-  },[])
+  // const handleClick = useCallback((e) => {
+  //   console.log(e.target.href);
+  //   e.preventDefault();
+  //   alert(foo);
+  // },[])
+
+  const [count, setCount] = useState(1);
   
-  const foo = 1;
+  // let foo = 1;
   
   // const handleClick = e => {
   //   console.log(e.target.href);
   //   e.preventDefault();
   // }
+
+  const handleClick = (e) => {
+    // setFoo(foo+1); 非推奨の書き方
+    setCount(count => count + 1); //推奨されている書き方（countを受け取ってcountを返す）
+    // setCount(count => count + 1); //推奨されている書き方（countを受け取ってcountを返す）
+    // setCount(function(count) {
+    //   return count + 1;
+    // });
+    // setCount = count + 1;
+  }
+
   useEffect(() => {
-    console.log('まうんと時');
+    // console.log('まうんと時');
     document.body.style.backgroundColor = "lightblue";
     
     return () => {
-      console.log('あんまうんと時');
+      // console.log('あんまうんと時');
       document.body.style.backgroundColor = "";
 
     }
   }, []);
+
+  console.log(count);
+
 
   return (
     <>
@@ -49,8 +64,8 @@ export default function Home() {
       </Head>
 
       <Header />
-      <Link href="/about" legacyBehavior>
-      <a 
+      <h1>{count}</h1>
+      <button 
           // onClick={props.onClick}
           // onClick={function() {
             // alert(123);
@@ -65,8 +80,7 @@ export default function Home() {
           // }}
         >
           ボタン
-        </a>
-        </Link>
+        </button>
       <Main page="index" />
 
       <Footer />
