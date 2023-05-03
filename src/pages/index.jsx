@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -29,7 +29,17 @@ export default function Home() {
   //   console.log(e.target.href);
   //   e.preventDefault();
   // }
-  
+  useEffect(() => {
+    console.log('まうんと時');
+    document.body.style.backgroundColor = "lightblue";
+    
+    return () => {
+      console.log('あんまうんと時');
+      document.body.style.backgroundColor = "";
+
+    }
+  }, []);
+
   return (
     <>
       <Head>
