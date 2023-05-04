@@ -109,6 +109,13 @@ h1 {
   text-align: center;
 }
 
+input {
+  display: flex;
+  margin: 16px auto;
+  padding: 8px;
+  outline: none;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

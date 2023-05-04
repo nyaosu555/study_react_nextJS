@@ -22,7 +22,10 @@ export default function Home() {
   //   alert(foo);
   // },[])
 
+  // useStateを使う
   const [count, setCount] = useState(1);
+  const [text, setText] = useState("");
+  const [isShow, setIsShow] = useState(true);
   
   // let foo = 1;
   
@@ -62,7 +65,20 @@ export default function Home() {
     }
   }, []);
 
+  const handleChange = useCallback(e => {
+    if(e.target.value.length > 5) {
+      alert('5文字以内にしてください。');
+      return;
+    }
+    setText(e.target.value.trim());
+  }, []);
+
+  const handleDisplay = useCallback(() => {
+    setIsShow(isShow => !isShow);
+  }, []);
+
   // console.log(count);
+  // console.log(text)
 
 
   return (
@@ -74,7 +90,17 @@ export default function Home() {
       </Head>
 
       <Header />
-      <h1>{count}</h1>
+      <input type="text" value={text}
+        // onChange={e => {
+        //   if(text.length >= 5) {
+        //     return;
+        //   }
+        //   setText(e.target.value)
+        // }}
+        onChange={handleChange}
+      />
+      {/* <h1>{count}</h1> */}
+      {isShow ? <h1>{count}</h1> : null}
       <button 
           // onClick={props.onClick}
           // onClick={function() {
@@ -90,6 +116,22 @@ export default function Home() {
           // }}
         >
           ボタン
+        </button>
+        <button
+          // onClick={() => {
+            // setIsShow(isShow => {
+              // if(isShow) {
+              //   return false;
+              // }
+              // return true;
+              // return isShow ? false : true;
+              // return !isShow;
+            // });
+            // setIsShow(isShow => !isShow);
+          // }}
+          onClick={handleDisplay}
+          >
+          {isShow ? `非表示` : `表示`}
         </button>
       <Main page="index" />
 
