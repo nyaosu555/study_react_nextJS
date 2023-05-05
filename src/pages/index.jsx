@@ -26,6 +26,7 @@ export default function Home() {
   const [count, setCount] = useState(1);
   const [text, setText] = useState("");
   const [isShow, setIsShow] = useState(true);
+  const [array, setArray] = useState([]);
   
   // let foo = 1;
   
@@ -77,8 +78,24 @@ export default function Home() {
     setIsShow(isShow => !isShow);
   }, []);
 
+  const handleAdd = useCallback(() => {
+    setArray((prevArray) => {
+      if(prevArray.some(item => item === text)) {
+        alert('同じ要素が既に存在しています。');
+        return prevArray;
+      }
+      // const newArray = prevArray;
+      // newArray.push(1);
+      // const newArray = [...prevArray, text];
+      // return newArray;
+      return [...prevArray, text];
+    })
+    setText('');
+  }, [text]);
+
   // console.log(count);
   // console.log(text)
+  console.log(array);
 
 
   return (
@@ -99,6 +116,7 @@ export default function Home() {
         // }}
         onChange={handleChange}
       />
+
       {/* <h1>{count}</h1> */}
       {isShow ? <h1>{count}</h1> : null}
       <button 
@@ -133,6 +151,19 @@ export default function Home() {
           >
           {isShow ? `非表示` : `表示`}
         </button>
+        <button
+          onClick={handleAdd}
+        >
+          追加
+        </button>
+
+        <ul>
+        {array.map(item => {
+          return (
+            <li key={item}>{item}</li>
+          )
+        })}
+      </ul>
       <Main page="index" />
 
       <Footer />
