@@ -3,7 +3,10 @@ import { Inter } from 'next/font/google'
 import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
-import { useCallback, useEffect, useState } from 'react'
+// import { useCallback, useEffect, useState } from 'react'
+import { useCouter } from 'src/hooks/useCouter'
+import { useInputArray } from 'src/hooks/useInputArray'
+import { useBgLightblue } from 'src/hooks/useBgLightblue'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,11 +25,82 @@ export default function Home() {
   //   alert(foo);
   // },[])
 
+  // Custom Hooks
+  // const useCouter = () => {
+  //   const [count, setCount] = useState(1);
+  //   const [isShow, setIsShow] = useState(true);
+
+  //   const handleClick = useCallback((e) => {
+  //     if(count < 10) {
+  //       console.log(count);
+  //       setCount(count => count +1);
+  //       // setCount(count => count +1);
+  //     }
+  //   }, [count]);
+
+  //   const handleDisplay = useCallback(() => {
+  //     setIsShow(isShow => !isShow);
+  //   }, []);
+
+  //   return { count, isShow, handleClick, handleDisplay }
+  
+  // }
+
+  // const useInputArray = () => {
+  //   const [text, setText] = useState("");
+  //   const [array, setArray] = useState([]);
+
+  //   const handleChange = useCallback(e => {
+  //     if(e.target.value.length > 5) {
+  //       alert('5文字以内にしてください。');
+  //       return;
+  //     }
+  //     setText(e.target.value.trim());
+  //   }, []);
+  
+  //   const handleAdd = useCallback(() => {
+  //     setArray((prevArray) => {
+  //       if(text === '') {
+  //         alert('1文字以上の文字を入れてください。')
+  //         return prevArray;
+  //       }
+  //       if(prevArray.some(item => item === text)) {
+  //         alert('同じ要素が既に存在しています。');
+  //         return prevArray;
+  //       }
+  //       // const newArray = prevArray;
+  //       // newArray.push(1);
+  //       // const newArray = [...prevArray, text];
+  //       // return newArray;
+  //       return [...prevArray, text];
+  //     })
+  //     setText('');
+  //   }, [text]);
+
+  //   return { text, array, handleChange, handleAdd }
+  
+  // }
+
+  // const useBgLightblue = () => {
+  //   useEffect(() => {
+  //     // console.log('まうんと時');
+  //     // console.log(`マウント時：${count}`);
+  //     document.body.style.backgroundColor = "lightblue";
+      
+  //     return () => {
+  //       // console.log('あんまうんと時');
+  //       // console.log(`アンマウント時：${count}`);
+  //       document.body.style.backgroundColor = "";
+  
+  //     }
+  //   }, []);
+  // }
+
   // useStateを使う
-  const [count, setCount] = useState(1);
-  const [text, setText] = useState("");
-  const [isShow, setIsShow] = useState(true);
-  const [array, setArray] = useState([]);
+  const { count, isShow, handleClick, handleDisplay } = useCouter();
+  const { text, array, handleChange, handleAdd } = useInputArray();
+
+  useBgLightblue();
   
   // let foo = 1;
   
@@ -45,57 +119,9 @@ export default function Home() {
   //   // setCount = count + 1;
   // }
 
-  const handleClick = useCallback((e) => {
-    if(count < 10) {
-      console.log(count);
-      setCount(count => count +1);
-      // setCount(count => count +1);
-    }
-  }, [count]);
-
-  useEffect(() => {
-    // console.log('まうんと時');
-    // console.log(`マウント時：${count}`);
-    document.body.style.backgroundColor = "lightblue";
-    
-    return () => {
-      // console.log('あんまうんと時');
-      // console.log(`アンマウント時：${count}`);
-      document.body.style.backgroundColor = "";
-
-    }
-  }, []);
-
-  const handleChange = useCallback(e => {
-    if(e.target.value.length > 5) {
-      alert('5文字以内にしてください。');
-      return;
-    }
-    setText(e.target.value.trim());
-  }, []);
-
-  const handleDisplay = useCallback(() => {
-    setIsShow(isShow => !isShow);
-  }, []);
-
-  const handleAdd = useCallback(() => {
-    setArray((prevArray) => {
-      if(prevArray.some(item => item === text)) {
-        alert('同じ要素が既に存在しています。');
-        return prevArray;
-      }
-      // const newArray = prevArray;
-      // newArray.push(1);
-      // const newArray = [...prevArray, text];
-      // return newArray;
-      return [...prevArray, text];
-    })
-    setText('');
-  }, [text]);
-
   // console.log(count);
   // console.log(text)
-  console.log(array);
+  // console.log(array);
 
 
   return (

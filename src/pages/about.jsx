@@ -3,10 +3,21 @@ import { Inter } from 'next/font/google'
 import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
+import { useCouter } from 'src/hooks/useCouter'
+import { useInputArray } from 'src/hooks/useInputArray'
+import { useBgLightblue } from 'src/hooks/useBgLightblue'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function About() {
+
+  // useStateを使う
+  const { count, isShow, handleClick, handleDisplay } = useCouter();
+  const { text, array, handleChange, handleAdd } = useInputArray();
+
+  useBgLightblue();
+  
   return (
     <>
       <Head>
@@ -16,6 +27,25 @@ export default function Home() {
       </Head>
       
       <Header />
+
+      <input type="text" value={text}
+        onChange={handleChange}
+      />
+
+      {isShow ? <h1>{count}</h1> : null}
+      <button onClick={handleClick}>ボタン</button>
+        <button onClick={handleDisplay}>
+          {isShow ? `非表示` : `表示`}
+        </button>
+        <button onClick={handleAdd}>追加</button>
+
+        <ul>
+        {array.map(item => {
+          return (
+            <li key={item}>{item}</li>
+          )
+        })}
+      </ul>
 
 
       <Main page="about" />
