@@ -8,10 +8,12 @@ export function Headline(props) {
         <h1 className={styles.title}>{props.page} page</h1>
         <div className={styles.description}>
           <p>
-            Get started by editing&nbsp;
+            {/* Get started by editing&nbsp; */}
             {/* {props.code} */}
-            {props.children}
+            {/* {props.children} */}
+            アイテムの数は{props.children}個です。
           </p>
+          <button onClick={props.handleReduce}>減らす</button>
         </div>
     </>
   )
