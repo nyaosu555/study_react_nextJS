@@ -4,9 +4,9 @@ import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
 // import { useCallback, useEffect, useState } from 'react'
-// import { useCouter } from 'src/hooks/useCouter'
-// import { useInputArray } from 'src/hooks/useInputArray'
-// import { useBgLightblue } from 'src/hooks/useBgLightblue'
+import { useCouter } from 'src/hooks/useCouter'
+import { useInputArray } from 'src/hooks/useInputArray'
+import { useBgLightblue } from 'src/hooks/useBgLightblue'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,8 +17,8 @@ const inter = Inter({ subsets: ['latin'] })
 // }
 
 
-export default function Home({ count, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd }) {
-  // console.log(props);
+export default function Home() {
+  
   // const handleClick = useCallback((e) => {
   //   console.log(e.target.href);
   //   e.preventDefault();
@@ -97,11 +97,10 @@ export default function Home({ count, isShow, handleClick, handleDisplay, text, 
   // }
 
   // useStateを使う
-  // const { count, isShow, handleClick, handleDisplay } = useCouter();
-  // const { text, array, handleChange, handleAdd } = useInputArray();
-  // const { count, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd } = props;
+  const { count, isShow, handleClick, handleDisplay } = useCouter();
+  const { text, array, handleChange, handleAdd } = useInputArray();
 
-  // useBgLightblue();
+  useBgLightblue();
   
   // let foo = 1;
   

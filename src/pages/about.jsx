@@ -3,21 +3,20 @@ import { Inter } from 'next/font/google'
 import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
-// import { useCouter } from 'src/hooks/useCouter'
-// import { useInputArray } from 'src/hooks/useInputArray'
-// import { useBgLightblue } from 'src/hooks/useBgLightblue'
+import { useCouter } from 'src/hooks/useCouter'
+import { useInputArray } from 'src/hooks/useInputArray'
+import { useBgLightblue } from 'src/hooks/useBgLightblue'
 
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function About(props) {
-  console.log(props);
-  // useStateを使う
-  // const { count, isShow, handleClick, handleDisplay } = useCouter();
-  // const { text, array, handleChange, handleAdd } = useInputArray();
-  const { count, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd } = props;
+export default function About() {
 
-  // useBgLightblue();
+  // useStateを使う
+  const { count, isShow, handleClick, handleDisplay } = useCouter();
+  const { text, array, handleChange, handleAdd } = useInputArray();
+
+  useBgLightblue();
   
   return (
     <>
