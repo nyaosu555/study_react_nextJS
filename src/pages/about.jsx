@@ -3,20 +3,17 @@ import { Inter } from 'next/font/google'
 import { Footer } from 'src/components/Footer'
 import { Main } from 'src/components/Main'
 import { Header } from 'src/components/Header'
-import { useCouter } from 'src/hooks/useCouter'
-import { useInputArray } from 'src/hooks/useInputArray'
-import { useBgLightblue } from 'src/hooks/useBgLightblue'
-
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function About() {
+export default function About({count, doubleCount, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd}) {
 
   // useStateを使う
-  const { count, isShow, handleClick, handleDisplay } = useCouter();
-  const { text, array, handleChange, handleAdd } = useInputArray();
+  // const { count, isShow, handleClick, handleDisplay } = useCouter();
+  // const { text, array, handleChange, handleAdd } = useInputArray();
+  // const { count, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd } = props;
 
-  useBgLightblue();
+  // useBgLightblue();
   
   return (
     <>
@@ -32,7 +29,7 @@ export default function About() {
         onChange={handleChange}
       />
 
-      {isShow ? <h1>{count}</h1> : null}
+      {isShow ? <h1>{ doubleCount }</h1> : null}
       <button onClick={handleClick}>ボタン</button>
         <button onClick={handleDisplay}>
           {isShow ? `非表示` : `表示`}

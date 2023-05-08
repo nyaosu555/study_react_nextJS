@@ -17,7 +17,8 @@ const inter = Inter({ subsets: ['latin'] })
 // }
 
 
-export default function Home() {
+export default function Home(props) {
+  console.log(props);
   
   // const handleClick = useCallback((e) => {
   //   console.log(e.target.href);
@@ -97,10 +98,11 @@ export default function Home() {
   // }
 
   // useStateを使う
-  const { count, isShow, handleClick, handleDisplay } = useCouter();
-  const { text, array, handleChange, handleAdd } = useInputArray();
+  // const { count, isShow, handleClick, handleDisplay } = useCouter();
+  // const { text, array, handleChange, handleAdd } = useInputArray();
+  const { count, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd } = props;
 
-  useBgLightblue();
+  // useBgLightblue();
   
   // let foo = 1;
   
