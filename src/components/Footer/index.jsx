@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 
 
-export function Footer() {
+export const Footer = () => {
   return (
     <>
       <footer className={styles.footer}>

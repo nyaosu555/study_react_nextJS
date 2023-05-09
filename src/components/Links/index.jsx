@@ -28,7 +28,7 @@ const inter = Inter({ subsets: ['latin'] })
 //   },
 // ]
 
-export function Links({ items }) {
+export const Links = ({ items }) => {
   
   // const [items, setItems] = useState(ITEMS); 
 

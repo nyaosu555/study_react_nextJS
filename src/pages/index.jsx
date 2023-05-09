@@ -17,7 +17,7 @@ const inter = Inter({ subsets: ['latin'] })
 // }
 
 
-export default function Home(props) {
+const Home = (props) => {
   console.log(props);
   
   // const handleClick = useCallback((e) => {
@@ -198,3 +198,5 @@ export default function Home(props) {
     </>
   )
 }
+
+export default Home

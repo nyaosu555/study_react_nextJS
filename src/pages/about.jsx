@@ -6,12 +6,14 @@ import { Header } from 'src/components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function About({count, doubleCount, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd}) {
+// export default function About({count, doubleCount, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd}) {
+// export default function About(props) {
+const About = (props) => {
 
   // useStateを使う
   // const { count, isShow, handleClick, handleDisplay } = useCouter();
   // const { text, array, handleChange, handleAdd } = useInputArray();
-  // const { count, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd } = props;
+  const { count, doubleCount, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd } = props;
 
   // useBgLightblue();
   
@@ -51,3 +53,5 @@ export default function About({count, doubleCount, isShow, handleClick, handleDi
     </>
   )
 }
+
+export default About
