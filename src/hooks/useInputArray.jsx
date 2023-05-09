@@ -18,7 +18,10 @@ export const useInputArray = () => {
         alert('1文字以上の文字を入れてください。')
         return prevArray;
       }
-      if(prevArray.some(item => item === text)) {
+        // [[label]:'foo', [label]:'bar', [label]:'hoge']・・・配列の中にobjで入っているときはsome()を使う
+      // if(prevArray.some(item => item === text)) {
+        // ['foo', 'bar', 'hoge']・・・配列に直で文字列が入ってるときはincludesが使える
+      if(prevArray.includes(text)) {
         alert('同じ要素が既に存在しています。');
         return prevArray;
       }

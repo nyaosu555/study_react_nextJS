@@ -31,7 +31,7 @@ const ITEMS = [
 const inter = Inter({ subsets: ['latin'] })
 
 
-export function Main(props) {
+export const Main = (props) => {
 
   const [items, setItems] = useState(ITEMS); 
 
